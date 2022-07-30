@@ -1,4 +1,7 @@
 <?php
+// Headers
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
 include "../config/Database.php";
 class FetchCountry extends Database{
 
@@ -23,17 +26,17 @@ class FetchCountry extends Database{
             $query2 = "SELECT * FROM `countries` ORDER BY `id` LIMIT $offset, $limit";
             $stmt2 = $this->conn->prepare($query2);
             $stmt2->execute();
-            $currencies = $stmt2->fetchAll();
+            $countries = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             
             //search query start here
             if(isset($_GET["search"])){
                 $query3 = "SELECT * FROM `countries` WHERE `common_name`  LIKE ? LIMIT $offset, $limit";
                 $stmt3 = $this->conn->prepare($query3);
                 $stmt3->execute(["%".$_GET["search"]."%"] );
-                $currencies = $stmt3->fetchAll();
+                $countries = $stmt3->fetchAll(PDO::FETCH_ASSOC);
             }
             
-            var_dump($currencies);  
+            var_dump($countries);  
     }
 
 }

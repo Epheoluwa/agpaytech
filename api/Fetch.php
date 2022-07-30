@@ -1,4 +1,8 @@
 <?php
+// Headers
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
+
 include "../config/Database.php";
 class Fetch extends Database{
 
@@ -19,20 +23,25 @@ class Fetch extends Database{
     $limit = $perpage;
 
     //sql query fetch
-    $query2 = "SELECT * FROM `currencies` ORDER BY `id` LIMIT $offset, $limit";
-    $stmt2 = $this->conn->prepare($query2);
-    $stmt2->execute();
-    $currencies = $stmt2->fetchAll();
-    
+    $query = "SELECT DISTINCT * FROM `currencies` ORDER BY `id` LIMIT $offset, $limit";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute();
+    $currencies = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     //search query start here
     if(isset($_GET["search"])){
-        $query3 = "SELECT * FROM `currencies` WHERE `official_name` LIKE ? LIMIT $offset, $limit";
+        $query3 = "SELECT * FROM `currencies` WHERE `common_name` LIKE ? LIMIT $offset, $limit";
         $stmt3 = $this->conn->prepare($query3);
         $stmt3->execute(["%".$_GET["search"]."%"]);
-        $currencies = $stmt3->fetchAll();
+        $currencies = $stmt3->fetchAll(PDO::FETCH_ASSOC);
     }
+    $currencies["page"] = $pagenow;
+    $currencies["Totalpage"] = $totalpages;
+    // var_dump($currencies); 
+    $response = json_encode($currencies);
+    echo $response;
     
-    var_dump($currencies);    
+    return $response;   
     
  }
 
