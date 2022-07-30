@@ -1,0 +1,1 @@
+{"version":1,"defects":[],"times":{"TaskTest::testGetCurrency":0.062,"TaskTest::testSearchCurrency":0.03,"TaskTest::testPaginationCurrency":0.013,"TaskTest::testGetCountry":0.037,"TaskTest::testSearchCountry":0.02,"TaskTest::testPaginationCountry":0.034}}

@@ -36,7 +36,12 @@ class FetchCountry extends Database{
                 $countries = $stmt3->fetchAll(PDO::FETCH_ASSOC);
             }
             
-            var_dump($countries);  
+            $countries["page"] = $pagenow;
+            $countries["Totalpage"] = $totalpages;
+            // var_dump($countries); 
+            $response = json_encode($countries);
+            echo $response;
+            return $response; 
     }
 
 }

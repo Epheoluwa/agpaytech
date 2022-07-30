@@ -2,5 +2,14 @@
     "require": {
         "guzzlehttp/guzzle": "^7.0",
         "phpunit/phpunit": "^9.5"
-    }
+    },
+      "authors": [
+        {
+            "name": "Solomon Sunmola",
+            "email": "sunmolasolomon@gmail.com"
+        }
+    ],
+    "scripts": {
+        "test": "./vendor/bin/phpunit"
+      }
 }

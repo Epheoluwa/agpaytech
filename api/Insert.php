@@ -25,7 +25,7 @@ class Insert extends Database{
             }
 
             fclose($file);
-            echo "Saved";
+            echo "Currency Data Saved Succesfully";
         }
         }
 }
