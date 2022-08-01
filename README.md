@@ -1,4 +1,4 @@
-Api App to upload csv  and also fetch data with pagination and search
+Api to upload csv and also fetch data with pagination and search
 
 Api test using PHPUnit test and Guzzle
 ### Database connection
