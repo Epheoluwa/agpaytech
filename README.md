@@ -1,7 +1,8 @@
 Api App to upload csv  and also fetch data with pagination and search
 
 Api test using PHPUnit test and Guzzle
-
+### Database connection
+The database connection is found in the config folder
 ### To Upload CSV FILE
 Upload the file from index.php 
 

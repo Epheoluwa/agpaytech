@@ -4,7 +4,7 @@ class Database{
      private $host = 'localhost:3308';
      private $db_name = 'agpaytech';
      private $username = 'root';
-     private $password = 'Solomon123';
+     private $password = '';
      protected $conn;
  
      // DB Connect
